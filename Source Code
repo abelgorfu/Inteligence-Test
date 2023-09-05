@@ -1,0 +1,419 @@
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Container;
+import javax.swing.JFrame;
+import java.awt.Component;
+import java.awt.LayoutManager;
+import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import java.util.TimerTask;
+import java.util.Timer;
+import java.awt.Toolkit;
+import javax.swing.JTextField;
+import javax.swing.JPanel;
+
+// 
+// Decompiled by Procyon v0.5.36
+// 
+
+public class WelcomeScreenFix
+{
+    static JPanel content;
+    public static JTextField useranswer;
+    Toolkit toolkit;
+    static String correctbutton;
+    Timer timer;
+    static String LosingMessage;
+    
+    static {
+        WelcomeScreenFix.content = new JPanel();
+        WelcomeScreenFix.correctbutton = "";
+        WelcomeScreenFix.LosingMessage = "g";
+    }
+    
+    public WelcomeScreenFix(final int seconds) {
+        this.toolkit = Toolkit.getDefaultToolkit();
+        (this.timer = new Timer()).schedule(new Failure(), seconds * 1000);
+    }
+    
+    public static void main(final String[] args) {
+        final int message = (int)(Math.random() * 14.0);
+        switch (message) {
+            case 1: {
+                WelcomeScreenFix.LosingMessage = "You failed the Moron Test, MORON!";
+                break;
+            }
+            case 2: {
+                WelcomeScreenFix.LosingMessage = "If you died, global IQ averages would increase 200%";
+                break;
+            }
+            case 3: {
+                WelcomeScreenFix.LosingMessage = "Pheraps humanity may be better of with your death";
+                break;
+            }
+            case 4: {
+                WelcomeScreenFix.LosingMessage = "You suck at life";
+                break;
+            }
+            case 5: {
+                WelcomeScreenFix.LosingMessage = "Your clearly an idiot";
+                break;
+            }
+            case 6: {
+                WelcomeScreenFix.LosingMessage = "Just give up on life";
+                break;
+            }
+            case 7: {
+                WelcomeScreenFix.LosingMessage = "LOL LOOOSSSEERR!";
+                break;
+            }
+            case 8: {
+                WelcomeScreenFix.LosingMessage = "I think I may like WebCAT better than you";
+                break;
+            }
+            case 9: {
+                WelcomeScreenFix.LosingMessage = "You may actually have a negative IQ score";
+                break;
+            }
+            case 10: {
+                WelcomeScreenFix.LosingMessage = "Your IQ is so low, it actually subtracts from others";
+                break;
+            }
+            case 11: {
+                WelcomeScreenFix.LosingMessage = "Your obviously unhappy with your life";
+                break;
+            }
+            case 12: {
+                WelcomeScreenFix.LosingMessage = "If I had a nickel for every brain cell you had,I'd owe money";
+                break;
+            }
+            case 13: {
+                WelcomeScreenFix.LosingMessage = "Its ok,  no one likes you :)";
+                break;
+            }
+            default: {
+                WelcomeScreenFix.LosingMessage = "NO!";
+                break;
+            }
+        }
+        final WelcomeScreen1 displayPanel = new WelcomeScreen1((WelcomeScreen1)null);
+        final JButton okButton = new JButton("OK");
+        final JButton continueButton = new JButton("Continue");
+        final ButtonHandler listener = new ButtonHandler(null);
+        final ButtonHandler listener2 = new ButtonHandler(null);
+        okButton.addActionListener(listener);
+        continueButton.addActionListener(listener2);
+        WelcomeScreenFix.content.setLayout(new BorderLayout());
+        WelcomeScreenFix.content.add(displayPanel, "Center");
+        WelcomeScreenFix.content.add(okButton, "South");
+        WelcomeScreenFix.content.add(continueButton, "North");
+        final JFrame window = new JFrame("THE MORON TEST");
+        window.setContentPane(WelcomeScreenFix.content);
+        window.setSize(1500, 1000);
+        window.setLocation(500, 300);
+        window.setVisible(true);
+    }
+    
+    class Failure extends TimerTask
+    {
+        @Override
+        public void run() {
+            WelcomeScreenFix.this.toolkit.beep();
+            System.exit(0);
+        }
+    }
+    
+    static class Pressthis extends JPanel
+    {
+        public void paintComponent(final Graphics g) {
+            super.paintComponent(g);
+            final String WelcomeMessage = "Press this button ";
+            g.setFont(new Font("TimesRoman", 1, 30));
+            g.drawString(WelcomeMessage, 100, 300);
+            g.drawLine(100, 100, 100, 400);
+            g.drawLine(80, 300, 100, 400);
+            g.drawLine(120, 300, 100, 400);
+            g.setFont(new Font("TimesRoman", 0, 10));
+            g.setFont(new Font("TimesRoman", 0, 10));
+            this.setOpaque(true);
+            this.setBackground(Color.green);
+        }
+    }
+    
+    static class YouLost1 extends JPanel
+    {
+        public void paintComponent(final Graphics g) {
+            super.paintComponent(g);
+            g.setFont(new Font("TimesRoman", 1, 40));
+            g.drawString(WelcomeScreenFix.LosingMessage, 25, 300);
+            this.setBackground(Color.yellow);
+            this.setOpaque(true);
+        }
+    }
+    
+    private static class YouLostCat1 extends JPanel
+    {
+        private String LosingMessage;
+        private String LosingMessage1;
+        private String LosingMessage2;
+        
+        private YouLostCat1() {
+            this.LosingMessage = "While this statement of fact is correct and is indicative of a being with";
+            this.LosingMessage1 = " higher intelligence, I must inform you, you are still a moron. For your ";
+            this.LosingMessage2 = "observation I award you the Merit of Common Sense";
+        }
+        
+        public void paintComponent(final Graphics g) {
+            super.paintComponent(g);
+            g.setFont(new Font("TimesRoman", 0, 20));
+            g.drawString(this.LosingMessage, 100, 300);
+            g.drawString(this.LosingMessage1, 100, 350);
+            g.drawString(this.LosingMessage2, 100, 400);
+            g.setFont(new Font("TimesRoman", 0, 20));
+            g.drawString(this.LosingMessage, 100, 300);
+            g.setColor(Color.yellow);
+            g.fillOval(100, 100, 100, 100);
+            g.setColor(Color.black);
+            g.fillRect(125, 125, 10, 15);
+            g.drawArc(140, 100, 30, 40, 45, 120);
+            g.drawArc(137, 100, 30, 40, 45, 120);
+            g.drawArc(133, 100, 30, 40, 45, 120);
+            g.fillRect(150, 125, 10, 15);
+        }
+    }
+    
+    private static class Rules extends JPanel
+    {
+        public void paintComponent(final Graphics g) {
+            super.paintComponent(g);
+            final String WelcomeMessage = "This Game consists of a series of Brain teasers to Test your intellect";
+            final String WelcomeMessage2 = "Some tips: Hang on to my every word and take me as literal as possible if you interpret things your own way, you will lose";
+            final String rules = "Answer each teaser to the best of your ability, Invalid/incorrect answers will result in immediate termination of the game";
+            final String rules2 = "and a formal declaration of you moroninitity (Yes that is a word)";
+            final String please = "Please play this game in a full screen unless you like losing";
+            g.setFont(new Font("TimesRoman", 0, 16));
+            g.drawString(WelcomeMessage, 100, 30);
+            g.drawString(WelcomeMessage2, 100, 60);
+            g.drawString(rules, 100, 90);
+            g.drawString(rules2, 100, 120);
+            g.drawString(please, 100, 150);
+            g.setFont(new Font("TimesRoman", 1, 20));
+            g.drawString("Press any button to play", 100, 200);
+            this.setBackground(Color.WHITE);
+            this.setOpaque(true);
+        }
+    }
+    
+    static class C0NTINUE1 extends JPanel
+    {
+        public void paintComponent(final Graphics g) {
+            super.paintComponent(g);
+            final String WelcomeMessage = "So this is the end, you have won, click C0NTINUE to finish";
+            g.setFont(new Font("TimesRoman", 1, 30));
+            g.drawString(WelcomeMessage, 100, 300);
+            this.setBackground(Color.ORANGE);
+            this.setOpaque(true);
+        }
+    }
+    
+    private static class End extends JPanel
+    {
+        public void paintComponent(final Graphics g) {
+            super.paintComponent(g);
+            final String WelcomeMessage = "CONGRATS YOU HAVE A BRAIN";
+            g.setFont(new Font("TimesRoman", 1, 50));
+            g.drawString(WelcomeMessage, 50, 300);
+            this.setBackground(Color.MAGENTA);
+            this.setOpaque(true);
+        }
+    }
+    
+    private static class WelcomeScreen1 extends JPanel
+    {
+        public void paintComponent(final Graphics g) {
+            super.paintComponent(g);
+            final String WelcomeMessage = "Welcome to the Moron Test! Please Press OK to CONTINUE";
+            g.setFont(new Font("TimesRoman", 1, 30));
+            g.drawString(WelcomeMessage, 100, 300);
+            g.setFont(new Font("TimesRoman", 0, 10));
+            g.drawString("*", 880, 290);
+            g.setFont(new Font("TimesRoman", 0, 10));
+            g.drawString("*Press the other button", 1, 650);
+            this.setBackground(Color.pink);
+            this.setOpaque(true);
+        }
+    }
+    
+    public static class ButtonHandler3 implements ActionListener
+    {
+        static int clicks;
+        
+        @Override
+        public void actionPerformed(final ActionEvent e) {
+            ++ButtonHandler3.clicks;
+            final String buttonstring = ((JButton)e.getSource()).getActionCommand();
+            if (buttonstring == "Press me") {
+                new WelcomeScreenFix(2);
+                final YouLost1 displayPanel = new YouLost1();
+                final JPanel content = new JPanel();
+                content.setLayout(new BorderLayout());
+                content.add(displayPanel, "Center");
+                final JFrame window = new JFrame("THE MORON TEST");
+                window.setContentPane(content);
+                window.setSize(1500, 1000);
+                window.setLocation(100, 100);
+                window.setVisible(true);
+            }
+            else {
+                WelcomeScreenFix.content.removeAll();
+                WelcomeScreenFix.content.revalidate();
+                final C0NTINUE1 displaypanel = new C0NTINUE1();
+                final JButton C0NTINUEbutton = new JButton("C0NTINUE");
+                final JButton continueButton = new JButton("CONTINUE");
+                final JButton continueButton2 = new JButton("CONTINUE");
+                final JButton continueButton3 = new JButton("CONTINUE");
+                final ButtonHandler4 listener = new ButtonHandler4(null);
+                final ButtonHandler4 listener2 = new ButtonHandler4(null);
+                final ButtonHandler4 listener3 = new ButtonHandler4(null);
+                final ButtonHandler4 listener4 = new ButtonHandler4(null);
+                C0NTINUEbutton.addActionListener(listener);
+                continueButton.addActionListener(listener2);
+                continueButton.addActionListener(listener3);
+                continueButton.addActionListener(listener4);
+                WelcomeScreenFix.content.setLayout(new BorderLayout());
+                WelcomeScreenFix.content.add(displaypanel, "Center");
+                WelcomeScreenFix.content.add(C0NTINUEbutton, "South");
+                WelcomeScreenFix.content.add(continueButton, "East");
+                WelcomeScreenFix.content.add(continueButton, "West");
+                WelcomeScreenFix.content.add(continueButton, "North");
+                WelcomeScreenFix.content.revalidate();
+            }
+        }
+    }
+    
+    private static class ButtonHandler1 implements ActionListener
+    {
+        @Override
+        public void actionPerformed(final ActionEvent e) {
+            WelcomeScreenFix.correctbutton = ((JButton)e.getSource()).getActionCommand();
+            if (WelcomeScreenFix.correctbutton.equals("GO") || WelcomeScreenFix.correctbutton.equals("autowin")) {
+                WelcomeScreenFix.content.removeAll();
+                WelcomeScreenFix.content.updateUI();
+                new WelcomeScreenFix(2);
+                final YouLost1 displayPanel1 = new YouLost1();
+                final JPanel content1 = new JPanel();
+                WelcomeScreenFix.content.setLayout(new BorderLayout());
+                WelcomeScreenFix.content.add(displayPanel1, "Center");
+                WelcomeScreenFix.content.revalidate();
+            }
+            else if (WelcomeScreenFix.correctbutton.equals("WebCATsucks")) {
+                WelcomeScreenFix.content.removeAll();
+                WelcomeScreenFix.content.updateUI();
+                final YouLostCat1 displayPanel2 = new YouLostCat1((YouLostCat1)null);
+                final JPanel content2 = new JPanel();
+                WelcomeScreenFix.content.setLayout(new BorderLayout());
+                WelcomeScreenFix.content.add(displayPanel2, "Center");
+                WelcomeScreenFix.content.revalidate();
+                new WelcomeScreenFix(5);
+            }
+            else if (WelcomeScreenFix.correctbutton.equals("any")) {
+                WelcomeScreenFix.content.removeAll();
+                WelcomeScreenFix.content.updateUI();
+                final Pressthis thispanel = new Pressthis();
+                WelcomeScreenFix.content.add(thispanel, "Center");
+                final JButton thisButton = new JButton("this");
+                final JButton Pressme = new JButton("Press me");
+                final ButtonHandler3 listener = new ButtonHandler3();
+                final ButtonHandler3 listener2 = new ButtonHandler3();
+                thisButton.addActionListener(listener);
+                Pressme.addActionListener(listener2);
+                WelcomeScreenFix.content.add(Pressme, "South");
+                WelcomeScreenFix.content.add(thisButton, "North");
+                WelcomeScreenFix.content.revalidate();
+            }
+        }
+    }
+    
+    private static class ButtonHandler4 implements ActionListener
+    {
+        @Override
+        public void actionPerformed(final ActionEvent e) {
+            final String correctbutton = ((JButton)e.getSource()).getActionCommand();
+            if (correctbutton.equals("C0NTINUE")) {
+                WelcomeScreenFix.content.removeAll();
+                WelcomeScreenFix.content.updateUI();
+                final End theend = new End((End)null);
+                WelcomeScreenFix.content.add(theend, "Center");
+                WelcomeScreenFix.content.revalidate();
+                new WelcomeScreenFix(5);
+            }
+            else {
+                new WelcomeScreenFix(5);
+                final YouLost1 displayPanel = new YouLost1();
+                final JPanel content = new JPanel();
+                content.setLayout(new BorderLayout());
+                content.add(displayPanel, "Center");
+                final JFrame window = new JFrame("THE MORON TEST");
+                window.setContentPane(content);
+                window.setSize(1500, 1000);
+                window.setLocation(100, 100);
+                window.setVisible(true);
+            }
+        }
+    }
+    
+    private static class ButtonHandler implements ActionListener
+    {
+        @Override
+        public void actionPerformed(final ActionEvent e) {
+            final String correctbutton = ((JButton)e.getSource()).getActionCommand();
+            if (correctbutton.equals("OK")) {
+                WelcomeScreenFix.content.removeAll();
+                WelcomeScreenFix.content.updateUI();
+                new WelcomeScreenFix(5);
+                final YouLost1 displayPanel = new YouLost1();
+                final JPanel content = new JPanel();
+                content.setLayout(new BorderLayout());
+                content.add(displayPanel, "Center");
+                final JFrame window = new JFrame("THE MORON TEST");
+                window.setContentPane(content);
+                window.setSize(1500, 1000);
+                window.setLocation(100, 100);
+                window.setVisible(true);
+            }
+            else {
+                WelcomeScreenFix.content.removeAll();
+                WelcomeScreenFix.content.updateUI();
+                final Rules displayPanel2 = new Rules((Rules)null);
+                WelcomeScreenFix.content.setLayout(new BorderLayout());
+                WelcomeScreenFix.content.add(displayPanel2, "Center");
+                final JButton gobutton = new JButton("GO");
+                final JButton autowin = new JButton("autowin");
+                final JButton WebCATsucks = new JButton("WebCATsucks");
+                final JButton anybutton = new JButton("any");
+                final ButtonHandler1 listener1 = new ButtonHandler1(null);
+                final ButtonHandler1 listener2 = new ButtonHandler1(null);
+                final ButtonHandler1 listener3 = new ButtonHandler1(null);
+                final ButtonHandler1 listener4 = new ButtonHandler1(null);
+                gobutton.addActionListener(listener1);
+                autowin.addActionListener(listener2);
+                WebCATsucks.addActionListener(listener3);
+                anybutton.addActionListener(listener4);
+                WelcomeScreenFix.content.setLayout(new BorderLayout());
+                WelcomeScreenFix.content.add(displayPanel2, "Center");
+                WelcomeScreenFix.content.add(autowin, "West");
+                WelcomeScreenFix.content.add(WebCATsucks, "South");
+                WelcomeScreenFix.content.add(anybutton, "North");
+                final JFrame window2 = new JFrame("THE MORON TEST");
+                window2.setContentPane(WelcomeScreenFix.content);
+                window2.setSize(1500, 1000);
+                window2.setLocation(100, 100);
+                window2.setVisible(true);
+                WelcomeScreenFix.content.revalidate();
+            }
+        }
+    }
+}
